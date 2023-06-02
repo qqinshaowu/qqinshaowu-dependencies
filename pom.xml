@@ -14,7 +14,7 @@
     <artifactId>qqinshaowu-dependencies</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>qqinshaowu-dependencies</name>
-    <description>allProject依赖</description>
+    <description>allProject依赖管理</description>
     <packaging>pom</packaging>
 
 
@@ -22,7 +22,42 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <springdoc.version>2.0.2</springdoc.version>
+        <qqinshaowu.version>1.0-SNAPSHOT</qqinshaowu.version>
+
     </properties>
+
+    <!-- 标签解释：
+    <dependencyManagement>元素是Maven中的一个特殊元素，它可以用于管理项目中所有依赖项的版本号。它允许您在项目中定义依赖项的版本号，而不需要在每个模块中都重复定义。
+    需要注意的是，<dependencyManagement>元素只是用于管理依赖项的版本号，它并不会实际引入依赖项。如果要在项目中使用依赖项，还需要在相应的模块中添加<dependency>元素。
+    -->
+    <dependencyManagement>
+        <dependencies>
+
+        <!--依赖添加了OpenAPI UI支持，包括Swagger UI和ReDoc。这些UI工具可以帮助您可视化和测试OpenAPI规范。-->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <!--依赖添加了OpenAPI规范的核心支持，包括生成OpenAPI文档和自动生成API文档。-->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-common</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+
+            <!--自己项目的引入-->
+            <dependency>
+                <groupId>com.qqinshaowu</groupId>
+                <artifactId>qqinshaowu-basic-projec-iot-controller</artifactId>
+                <version>${qqinshaowu.version}</version>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
 
 
 </project>
